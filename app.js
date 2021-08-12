@@ -5,10 +5,21 @@ const resetbutton = document.querySelector('#reset')
 const p1Display = document.querySelector('#p1Display')
 const p2Display = document.querySelector('#p2Display')
 
+const winningScoreSelect = document.querySelector("#playtill");
 let p1Score = 0;
 let p2Score = 0;
 let winningScore = 5;
 let isGameOver = false;
+
+winningScoreSelect.addEventListener('change', function () {
+    winningScore = parseInt(this.value);
+    isGameOver = false
+    p1Score = 0;
+    p2Score = 0;
+    p1Display.innerText = p1Score
+    p2Display.innerText = p2Score
+
+})
 
 p1button.addEventListener('click', function () {
     if (!isGameOver) {
@@ -34,6 +45,7 @@ p2button.addEventListener('click', function () {
 
 })
 resetbutton.addEventListener('click', function () {
+    isGameOver = false
     p1Score = 0;
     p2Score = 0;
     p1Display.innerText = p1Score
